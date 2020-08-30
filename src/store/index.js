@@ -32,6 +32,16 @@ export default new Vuex.Store({
         }
     },
     getters: {
+        // 当前用户
+        get_current_user: (state) => {
+            state.currentUser = null;
+            let user = JSON.parse(sessionStorage.getItem(currentUser));
+            console.log('读到了：', user);
+            if (user != null) {
+                state.currentUser = user;
+            }
+            return state.currentUser;
+        },
         // 括号中无法传递两个参数
         get_current_status: (state) => (cp) => {
             console.log('getter', cp);
@@ -48,6 +58,15 @@ export default new Vuex.Store({
                 k.currentPage = 1;
                 return k
             }
+        },
+        get_server_status: (state) => {
+            let ok = sessionStorage.getItem(serverStatus);
+            if (ok == null) {
+                state.serverStatus = false;
+            } else {
+                state.serverStatus = ok;
+            }
+            return state.serverStatus;
         }
     },
     actions: {},

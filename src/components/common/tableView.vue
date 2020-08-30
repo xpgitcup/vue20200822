@@ -14,9 +14,9 @@
         <el-pagination
             @size-change="handleSizeChange"
             @current-change="handleCurrentChange"
-            :current-page="currentPage"
+            :current-page="status.pageInfo.currentPage"
             :page-sizes="[5, 10, 20, 40]"
-            :page-size="pageSize"
+            :page-size="status.pageInfo.pageSize"
             :layout="layout"
             :total="total">
         </el-pagination>
@@ -35,13 +35,15 @@ export default {
                     currentPage: 1
                 }
             },
+            total: 0,
             tableData: [],
             tableHeader: {}
         }
     },
     props: {
         title: String,
-        domainName: String
+        domainName: String,
+        layout: String
     },
     created() {
         this.status.pageInfo = this.$store.getters.get_current_status(this.status.currentPath);
