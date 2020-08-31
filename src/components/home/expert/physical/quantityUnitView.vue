@@ -1,14 +1,12 @@
 <template>
-    <table-view
-        title="项目概览"
-        domain-name="engineeringOperation"></table-view>
+    <table-view title="物理量" domain-name="quantityUnit">
+    </table-view>
 </template>
 
 <script>
 import TableView from "@/components/common/tableView";
-
 export default {
-    name: "info",
+    name: "quantityUnitView",
     components: {TableView}
 }
 </script>

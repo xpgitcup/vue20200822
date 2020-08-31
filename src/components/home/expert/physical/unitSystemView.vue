@@ -1,14 +1,13 @@
 <template>
-    <table-view
-        title="项目概览"
-        domain-name="engineeringOperation"></table-view>
+    <table-view title="单位制维护" domain-name="unitSystem">
+    </table-view>
 </template>
 
 <script>
 import TableView from "@/components/common/tableView";
 
 export default {
-    name: "info",
+    name: "unitSystemView",
     components: {TableView}
 }
 </script>
