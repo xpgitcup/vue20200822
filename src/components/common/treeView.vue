@@ -8,6 +8,7 @@
             :data="data"
             :props="defaultProps"
             node-key="id"
+            @node-click="handleNodeClick"
         >
         </el-tree>
 
@@ -32,7 +33,8 @@ export default {
                 currentPath: this.$route.path,
                 pageInfo: {
                     pageSize: 10,
-                    currentPage: 1
+                    currentPage: 1,
+                    currentNode: null
                 }
             },
             total: 0,
@@ -51,13 +53,22 @@ export default {
     props: {
         title: String,
         domainName: String,
-        layout: String
+        layout: String,
+        nodeClickFunction: {}
     },
     created() {
         this.status.pageInfo = this.$store.getters.get_current_status(this.status.currentPath);
         this.handleDataLoad();
     },
     methods: {
+        // 记录当前节点
+        handleNodeClick(node) {
+            this.status.pageInfo.currentNode = node;
+            this.$store.commit('set_current_status', this.status);
+            if (this.nodeClickFunction) {
+                this.nodeClickFunction(node);
+            }
+        },
         // 初始页currentPage、初始每页数据数pagesize和数据data
         handleSizeChange: function (size) {
             this.status.pageInfo.pageSize = size;
