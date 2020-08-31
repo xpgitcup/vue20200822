@@ -11,7 +11,7 @@
             <el-card>
                 <div slot="header">
                     <el-menu mode="horizontal">
-                        <el-menu-item index="1">
+                        <el-menu-item index="1" >
                             <i class="el-icon-plus"></i>
                             根节点
                         </el-menu-item>
@@ -21,14 +21,28 @@
                                     {{ status.pageInfo.currentNode.name }}
                                 </el-button>
                                 <el-button type="primary" icon="el-icon-circle-plus" round size="small">
+                                    子节点
                                 </el-button>
                                 <el-button type="primary" icon="el-icon-edit" round size="small">
+                                    编辑
                                 </el-button>
                                 <el-button type="primary" icon="el-icon-delete" round size="small">
+                                    删除
                                 </el-button>
                             </el-button-group>
                         </el-menu-item>
                     </el-menu>
+                </div>
+                <div>
+                    <el-button type="text" @click="dialogTableVisible = true">打开嵌套表格的 Dialog</el-button>
+
+                    <el-dialog title="收货地址" :visible.sync="dialogTableVisible">
+                        <el-table :data="gridData">
+                            <el-table-column property="date" label="日期" width="150"></el-table-column>
+                            <el-table-column property="name" label="姓名" width="200"></el-table-column>
+                            <el-table-column property="address" label="地址"></el-table-column>
+                        </el-table>
+                    </el-dialog>
                 </div>
             </el-card>
         </el-col>
@@ -49,8 +63,26 @@ export default {
                     pageSize: 10,
                     currentPage: 1,
                     currentNode: null
-                }
-            }
+                },
+            },
+            dialogTableVisible: false,
+            gridData: [{
+                date: '2016-05-02',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1518 弄'
+            }, {
+                date: '2016-05-04',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1518 弄'
+            }, {
+                date: '2016-05-01',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1518 弄'
+            }, {
+                date: '2016-05-03',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1518 弄'
+            }],
         }
     },
     computed: {},
@@ -61,6 +93,7 @@ export default {
         },
         createRootNode() {
             console.log('创建根节点')
+            this.dialogVisible = true;
         }
     }
 }
