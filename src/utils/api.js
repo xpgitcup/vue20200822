@@ -73,14 +73,13 @@ export const postKeyValueRequest = (url, params) => {
             for (let i in data) {
                 ret += encodeURIComponent(i) + '=' + encodeURIComponent(data[i]) + '&'
             }
-            // console.log('转换完毕：' + url);
-            // console.log('???');
-            // console.log(ret);
+            console.log('转换完毕：' + url);
+            console.log('???');
+            console.log(ret);
             return ret;
         }],
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
-            // 'Content-Type': 'application/json'
         }
     });
 }
