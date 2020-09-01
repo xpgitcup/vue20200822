@@ -17,6 +17,12 @@ import editDataNode from "@/components/home/expert/dataTypeCode/editDataNode";
 
 Vue.use(VueRouter)
 
+// 处理重复路径
+// const originalPush = VueRouter.prototype.push
+// VueRouter.prototype.push = function push (location) {
+//     return originalPush.call(this, location).catch(err => err)
+// }
+
 const routes = [
     {
         path: '/', component: () => import('../components/default'),
