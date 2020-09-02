@@ -9,6 +9,7 @@
             :props="defaultProps"
             node-key="id"
             @node-click="handleNodeClick"
+            :default-expanded-keys=[currentNode.id]
         >
         </el-tree>
 
@@ -59,6 +60,11 @@ export default {
     created() {
         this.status.pageInfo = this.$store.getters.get_current_status(this.status.currentPath);
         this.handleDataLoad();
+    },
+    computed:{
+        currentNode() {
+            return this.status.pageInfo.currentNode
+        }
     },
     methods: {
         // 记录当前节点

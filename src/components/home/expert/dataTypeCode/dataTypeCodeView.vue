@@ -6,7 +6,8 @@
                 :node-click-function="nodeClickFunction"
                 layout="prev,pager,next"
                 title="数据结构配置"
-                domain-name="dataTypeCodeOperation"></tree-view>
+                domain-name="dataTypeCodeOperation">
+            </tree-view>
         </el-col>
         <el-col :span="16">
             <el-card>
@@ -78,10 +79,6 @@ export default {
             if (this.$route.path != '/expert/dataTypeCodeView') {
                 this.$router.replace('/expert/dataTypeCodeView')
             }
-        },
-        createRootNode() {
-            console.log('创建根节点')
-            this.dialogVisible = true;
         },
         handleDataLoad() {
             console.log('刷新数据...')
