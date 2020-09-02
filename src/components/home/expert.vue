@@ -27,6 +27,15 @@
                             数据结构配置
                         </router-link>
                     </el-collapse-item>
+                    <el-collapse-item title="基础结构">
+                        <tree-view
+                            ref="treeView"
+                            :node-click-function="nodeClickFunction"
+                            layout="prev,pager,next"
+                            title="基础数据结构配置"
+                            domain-name="basicStructureOperation">
+                        </tree-view>
+                    </el-collapse-item>
                     <el-collapse-item title="数据维护">
                     </el-collapse-item>
                 </el-collapse>
@@ -34,13 +43,14 @@
         </el-col>
         <el-col :span="20">
             <el-card>
-                <router-view ref="child"></router-view>
+                <router-view ref="child" :currentNode="status.pageInfo.currentNode"></router-view>
             </el-card>
         </el-col>
     </el-row>
 </template>
 
 <script>
+import treeView from "@/components/common/treeView";
 
 /**
  * 专家模式：
@@ -49,8 +59,28 @@
 export default {
     name: "expert",
     props: {},
-    components: {},
-    methods: {},
+    components: {treeView},
+    data() {
+        return {
+            status: {
+                currentPath: this.$route.path,
+                pageInfo: {
+                    pageSize: 10,
+                    currentPage: 1,
+                    currentNode: null
+                },
+            },
+        }
+    },
+    methods: {
+        nodeClickFunction(node) {
+            // console.log('点击....', node)
+            this.status.pageInfo.currentNode = node;
+            if (this.$route.path != '/expert/expertInfo') {
+                this.$router.replace('/expert/expertInfo')
+            }
+        },
+    },
     computed: {}
 }
 </script>
