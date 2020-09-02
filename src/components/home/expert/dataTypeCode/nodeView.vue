@@ -1,5 +1,12 @@
 <template>
-    <div>Node View{{ currentNode }}</div>
+    <div>
+        <div v-if="currentNode">
+            当前节点：{{ currentNode.id }} {{ currentNode.name }}
+        </div>
+        <div v-else>
+            请点击选择想要操作的节点...
+        </div>
+    </div>
 </template>
 
 <script>

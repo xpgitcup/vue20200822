@@ -1,10 +1,13 @@
 <template>
     <el-form ref="form" :model="form" label-width="80px">
+        <el-form-item label="id">
+            <el-input v-model="form.id" :disabled="true"></el-input>
+        </el-form-item>
         <el-form-item label="name">
-            <el-input v-model="form.name"></el-input>
+            <el-input v-model="form.name" :disabled="true"></el-input>
         </el-form-item>
         <el-form-item label="description">
-            <el-select v-model="form.description" placeholder="请选择">
+            <el-select v-model="form.description" placeholder="请选择" :disabled="true">
                 <el-option
                     v-for="item in options"
                     :key="item.value"
@@ -17,7 +20,7 @@
             <el-input v-model="form.parent" :value="currentNode.id" :disabled="true"></el-input>
         </el-form-item>
         <el-form-item>
-            <el-button type="primary" @click="onSubmit">提交</el-button>
+            <el-button type="primary" @click="onSubmit">删除</el-button>
             <el-button @click="onCancle">取消</el-button>
         </el-form-item>
     </el-form>
@@ -25,7 +28,7 @@
 
 <script>
 export default {
-    name: "newChildNode",
+    name: "deleteNode",
     data() {
         return {
             form: {
@@ -44,7 +47,18 @@ export default {
         currentNode: {}
     },
     created() {
-        this.form.parent = this.$props.currentNode.id;
+        console.log('查询...')
+        this.form.id = this.$props.currentNode.id;
+        let url = 'dataTypeCodeOperation/show?id=' + this.$props.currentNode.id;
+        this.getRequest(url).then(response => {
+            // console.log('调用结束' + response.item);
+            // console.log(response.item);
+            this.form.name = response.item.name;
+            this.form.description = response.item.description;
+            if (response.item.parent) {
+                this.form.parent = response.item.parent.id
+            }
+        })
     },
     methods: {
         onSubmit() {
@@ -52,11 +66,10 @@ export default {
             this.$refs.form.validate(valid => {
                 if (valid) {
                     this.loading = true;
-                    this.postKeyValueRequest('/dataTypeCode/save', this.form).then(response => {
+                    this.deleteRequest('/dataTypeCode/delete/' + this.form.id).then(response => {
                         this.loading = false;
-                        console.log("post调用结果--创建子节点");
+                        console.log("delete--删除节点");
                         console.log(response);
-                        console.log(response.item.id);
                         if (response) {
                             this.$router.replace('/expert/dataTypeCodeView')
                             this.$emit('handleDataLoad')

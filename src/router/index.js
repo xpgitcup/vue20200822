@@ -14,6 +14,7 @@ import nodeView from "@/components/home/expert/dataTypeCode/nodeView";
 import createRootNode from "@/components/home/expert/dataTypeCode/createRootNode";
 import newChildNode from "@/components/home/expert/dataTypeCode/newChildNode";
 import editDataNode from "@/components/home/expert/dataTypeCode/editDataNode";
+import deleteNode from "@/components/home/expert/dataTypeCode/deleteNode";
 
 Vue.use(VueRouter)
 
@@ -40,7 +41,8 @@ const routes = [
                             {path: '', name: 'nodeView', component: nodeView},
                             {path: 'createRootNode', name: 'createRootNode', component: createRootNode},
                             {path: 'newChildNode', name: 'newChildNode', component: newChildNode},
-                            {path: 'editDataNode', name: 'editDataNode', component: editDataNode}
+                            {path: 'editDataNode', name: 'editDataNode', component: editDataNode},
+                            {path: 'deleteNode', name: 'deleteNode', component: deleteNode}
                         ]
                     }
                 ]

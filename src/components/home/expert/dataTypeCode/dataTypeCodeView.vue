@@ -12,44 +12,34 @@
             <el-card>
                 <div slot="header">
                     <div style="display: flex">
-                        <el-button round icon="el-icon-star-on" type="primary" style="margin-right: 10px">11</el-button>
-                        <el-button-group>
-                            <el-button round>11</el-button>
-                            <el-button round>11</el-button>
-                            <el-button>11</el-button>
-
-                        </el-button-group>
-                    </div>
-                    <el-menu mode="horizontal" router>
-                        <el-menu-item>
-                            <i class="el-icon-plus"></i>
+                        <el-button round icon="el-icon-star-on" type="primary" style="margin-right: 10px">
                             <router-link :to="{ path: '/expert/dataTypeCodeView/createRootNode'}">
                                 根节点
                             </router-link>
-                        </el-menu-item>
-                        <el-menu-item v-if="status.pageInfo.currentNode">
+                        </el-button>
+                        <el-button-group v-if="status.pageInfo.currentNode">
                             <el-button-group>
-                                <el-button type="success" icon="el-icon-star-on" round size="small">
+                                <el-button type="success" icon="el-icon-star-on" round>
                                     {{ status.pageInfo.currentNode.name }}
                                 </el-button>
-                                <el-button type="primary" icon="el-icon-circle-plus" round size="small">
+                                <el-button type="primary" icon="el-icon-circle-plus" round>
                                     <router-link :to="{ path: '/expert/dataTypeCodeView/newChildNode'}">
                                         子节点
                                     </router-link>
                                 </el-button>
-                                <el-button type="primary" icon="el-icon-edit" round size="small">
+                                <el-button type="primary" icon="el-icon-edit" round>
                                     <router-link :to="{ path: '/expert/dataTypeCodeView/editDataNode'}">
                                         编辑
                                     </router-link>
                                 </el-button>
-                                <el-button type="primary" icon="el-icon-delete" round size="small">
-                                    <router-link :to="{ path: '/expert/dataTypeCodeView/createRootNode'}">
+                                <el-button type="primary" icon="el-icon-delete" round>
+                                    <router-link :to="{ path: '/expert/dataTypeCodeView/deleteNode'}">
                                         删除
                                     </router-link>
                                 </el-button>
                             </el-button-group>
-                        </el-menu-item>
-                    </el-menu>
+                        </el-button-group>
+                    </div>
                 </div>
                 <div>
                     <router-view
