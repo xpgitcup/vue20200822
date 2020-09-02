@@ -9,7 +9,7 @@
             :props="defaultProps"
             node-key="id"
             @node-click="handleNodeClick"
-            :default-expanded-keys=[currentNode.id]
+            :default-expanded-keys=[currentId]
         >
         </el-tree>
 
@@ -47,7 +47,8 @@ export default {
             }],
             defaultProps: {
                 children: 'children',
-                label: 'name'
+                label: 'name',
+                description: 'description'
             }
         }
     },
@@ -64,6 +65,13 @@ export default {
     computed:{
         currentNode() {
             return this.status.pageInfo.currentNode
+        },
+        currentId() {
+            if (this.status.pageInfo.currentNode) {
+                return this.status.pageInfo.currentNode.id
+            } else {
+                return 1;
+            }
         }
     },
     methods: {
@@ -94,7 +102,7 @@ export default {
             this.getRequest(url + offset + '&max=' + this.status.pageInfo.pageSize).then(response => {
                 // console.log(resp);
                 if (response) {
-                    // console.log(response);
+                    console.log(response);
                     this.data = response.list;
                     this.total = response.count
                 }

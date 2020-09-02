@@ -66,6 +66,7 @@ export default {
             this.$refs.form.validate(valid => {
                 if (valid) {
                     this.loading = true;
+                    let parent = this.form.parent;
                     this.deleteRequest('/dataTypeCode/delete/' + this.form.id).then(response => {
                         this.loading = false;
                         console.log("delete--删除节点");
