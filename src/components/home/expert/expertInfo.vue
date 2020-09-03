@@ -2,26 +2,30 @@
     <el-card>
         <div slot="header" style="display: flex">
             <!--首先选择节点类型-->
-            <el-card>
-                <div slot="header">节点类型</div>
-                <el-radio-group v-model="radioNode">
-                    <el-radio label="ElementType">元素类型</el-radio>
-                    <el-radio label="ElementObject">实体元素</el-radio>
-                    <el-radio label="DataProperty">元素属性</el-radio>
-                </el-radio-group>
-            </el-card>
+            <span>
+            节点类型:
+            <el-select v-model="radioNode" placeholder="请选择">
+                <el-option
+                    v-for="item in optionsNode"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value">
+                </el-option>
+            </el-select>
+            </span>
             <!--然后选择属性类型-->
-            <el-card>
-                <div slot="header">属性类型</div>
-                <el-radio-group v-model="radioItem">
-                    <el-radio label="none">无</el-radio>
-                    <el-radio label="scalar">标量</el-radio>
-                    <el-radio label="string">字符串</el-radio>
-                    <el-radio label="vector">一维数组</el-radio>
-                    <el-radio label="vector2D">二维数组</el-radio>
-                    <el-radio label="object">对象</el-radio>
-                </el-radio-group>
-            </el-card>
+            <span>
+            节点类型:
+            <el-select v-model="radioItem" placeholder="请选择">
+                <el-option
+                    v-for="item in optionsItem"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value">
+                </el-option>
+            </el-select>
+            </span>
+            <!--操作按钮-->
             <el-button round icon="el-icon-star-on" type="primary" style="margin-right: 10px">
                 <router-link :to="{ path: '/expert/expertInfo/newRootStructure', query:{operation: '根节点'} }">
                     根节点
@@ -67,8 +71,18 @@ export default {
     name: "expertInfo",
     data() {
         return {
-            radioNode: String,
-            radioItem: String
+            radioNode: '',
+            radioItem: '',
+            optionsNode: [
+                {value: '元素类型', label: '元素类型'},
+                {value: '实体元素', label: '实体元素'},
+                {value: '元素属性', label: '元素属性'},
+            ],
+            optionsItem: [
+                {value: '元素类型', label: '元素类型'},
+                {value: '实体元素', label: '实体元素'},
+                {value: '元素属性', label: '元素属性'},
+            ],
         }
     },
     props: {
@@ -78,7 +92,9 @@ export default {
 </script>
 
 <style scoped>
-
+.el-select{
+    width: 110px;
+}
 .el-radio {
     display: block;
     text-align: left;
