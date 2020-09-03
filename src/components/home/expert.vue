@@ -43,7 +43,11 @@
         </el-col>
         <el-col :span="20">
             <el-card>
-                <router-view ref="child" :currentNode="status.pageInfo.currentNode"></router-view>
+                <router-view
+                    ref="child"
+                    @handleDataLoad="handleDataLoad"
+                    :currentNode="status.pageInfo.currentNode">
+                </router-view>
             </el-card>
         </el-col>
     </el-row>
@@ -77,9 +81,19 @@ export default {
             // console.log('点击....', node)
             this.status.pageInfo.currentNode = node;
             if (this.$route.path != '/expert/expertInfo') {
-                this.$router.replace('/expert/expertInfo')
+                this.$router.replace('/expert/expertInfo');
+            }
+            console.log('更新子组件：', node.attributes[0].name);
+            if (this.$refs.child.radioNode) {
+                this.$refs.child.radioNode = node.attributes[0].name;
+                this.$refs.child.radioItem = node.attributes[1].name;
             }
         },
+        handleDataLoad() {
+            console.log('刷新数据expert...');
+            console.log(this.$refs.atreeView);
+            this.$refs.treeView.handleDataLoad();
+        }
     },
     computed: {}
 }

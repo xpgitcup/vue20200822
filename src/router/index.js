@@ -16,7 +16,8 @@ import newChildNode from "@/components/home/expert/dataTypeCode/newChildNode";
 import editDataNode from "@/components/home/expert/dataTypeCode/editDataNode";
 import deleteNode from "@/components/home/expert/dataTypeCode/deleteNode";
 import expertInfo from "@/components/home/expert/expertInfo";
-import newRootStructure from "@/components/home/expert/basicStructure/newRootStructure";
+import newNode from "@/components/home/expert/basicStructure/newNode";
+import editNode from "@/components/home/expert/basicStructure/editNode";
 
 Vue.use(VueRouter)
 
@@ -37,7 +38,8 @@ const routes = [
                     {
                         path: 'expertInfo', name: 'expertInfo', component: expertInfo,
                         children: [
-                            {path: 'newRootStructure', name: 'newRootStructure', component: newRootStructure},
+                            {path: 'newNode', name: 'newNode', component: newNode},
+                            {path: 'editNode', name: 'editNode', component: editNode},
                         ]
                     },
                     {path: 'unitSystemView', name: 'unitSystemView', component: unitSystemView},

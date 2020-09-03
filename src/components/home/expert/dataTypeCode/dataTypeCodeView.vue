@@ -81,7 +81,7 @@ export default {
             }
         },
         handleDataLoad() {
-            console.log('刷新数据...')
+            console.log('DataTypeCode刷新...', this.$refs.treeView);
             this.$refs.treeView.handleDataLoad();
         }
     }
