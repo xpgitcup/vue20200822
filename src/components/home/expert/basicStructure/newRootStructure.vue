@@ -1,5 +1,8 @@
 <template>
-    <basic-structure-form></basic-structure-form>
+    <basic-structure-form
+        :current-node="currentNode"
+        :operation="operation">
+    </basic-structure-form>
 </template>
 
 <script>
@@ -8,6 +11,9 @@ import BasicStructureForm from "@/components/home/expert/basicStructure/basicStr
 export default {
     name: "newRootStructure",
     components: {BasicStructureForm},
+    props: {
+        currentNode: {}
+    },
     data() {
         return {
             operation: this.$route.query.operation
