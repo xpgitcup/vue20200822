@@ -79,6 +79,9 @@ export default {
                     }
                     this.tableData = resp.list;
                     this.total = resp.total;
+                    if ((this.total <= this.status.pageInfo.pageSize) && (this.status.pageInfo.currentPage != 1)) {
+                        this.handleCurrentChange(1);
+                    }
                 }
                 this.loading = false;
             })

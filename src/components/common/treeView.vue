@@ -48,7 +48,7 @@ export default {
             defaultProps: {
                 children: 'children',
                 label: 'name',
-                description: 'description'
+                isLeaf: 'leaf'
             }
         }
     },
@@ -62,7 +62,7 @@ export default {
         this.status.pageInfo = this.$store.getters.get_current_status(this.status.currentPath);
         this.handleDataLoad();
     },
-    computed:{
+    computed: {
         currentNode() {
             return this.status.pageInfo.currentNode
         },
@@ -105,6 +105,9 @@ export default {
                     console.log(response);
                     this.data = response.list;
                     this.total = response.count
+                    if ((this.total <= this.status.pageInfo.pageSize) && (this.status.pageInfo.currentPage != 1)) {
+                        this.handleCurrentChange(1);
+                    }
                 }
                 this.loading = false;
             })

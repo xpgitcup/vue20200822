@@ -50,11 +50,11 @@
                                 编辑
                             </router-link>
                         </el-button>
-                        <el-button type="primary" icon="el-icon-delete" round v-if="currentNode">
-                            <router-link :to="{ path: '/expert/expertInfo/deleteNode'}">
-                                删除
-                            </router-link>
-                        </el-button>
+                        <el-popconfirm
+                            @onConfirm="deleteNode(currentNode.id)"
+                            title="确定删除吗？">
+                            <el-button slot="reference" type="danger" icon="el-icon-delete" round>删除</el-button>
+                        </el-popconfirm>
                     </el-button-group>
                 </el-button-group>
             </div>
@@ -63,7 +63,7 @@
             </div>
         </div>
         <div v-if="currentNode">
-            当前节点：{{ currentNode.id }}.{{ currentNode.name }}.{{ currentNode.attributes }}
+            当前节点：{{ currentNode.id }}-{{ currentNode.name }}-{{ currentNode.leaf }}-{{ currentNode.attributes }}
         </div>
         <div v-else>
             请点击选择想要操作的节点...
@@ -106,6 +106,17 @@ export default {
             console.log('刷新数据expertInfo...')
             console.log('向上调用...')
             this.$emit('handleDataLoad')
+        },
+        deleteNode(id) {
+            console.log('删除！', id);
+            this.deleteRequest('/basicStructureOperation/delete/' + id).then(response => {
+                this.loading = false;
+                console.log("delete--删除节点");
+                console.log(response);
+                if (response) {
+                    this.$emit('handleDataLoad')
+                }
+            })
         }
     }
 }
