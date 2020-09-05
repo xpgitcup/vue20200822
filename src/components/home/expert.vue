@@ -22,11 +22,6 @@
                             </el-menu-item>
                         </el-menu>
                     </el-collapse-item>
-                    <el-collapse-item title="结构配置">
-                        <router-link :to="{ path: '/expert/dataTypeCodeView'}">
-                            数据结构配置
-                        </router-link>
-                    </el-collapse-item>
                     <el-collapse-item title="基础结构">
                         <tree-view
                             ref="treeView"
