@@ -19,7 +19,7 @@
 
         <!-- 这里是页脚-->
         <el-footer>
-            中国石油大学（北京） 2020~copyright©
+            <application-footer></application-footer>
         </el-footer>
     </el-container>
 </template>
@@ -27,6 +27,7 @@
 <script>
 import applicationTitle from "./home/applicationTitle.vue";
 import Info from "./home/info";
+import ApplicationFooter from "@/components/home/applicationFooter";
 
 export default {
     name: "default",
@@ -41,6 +42,7 @@ export default {
     created() {
     },
     components: {
+        ApplicationFooter,
         Info,
         applicationTitle
     }
