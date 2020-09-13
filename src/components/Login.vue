@@ -43,8 +43,8 @@
             return {
                 loading: false,
                 loginForm: {
-                    username: "me",
-                    password: "password"
+                    username: "",
+                    password: ""
                 },
                 checked: true,
                 rules: {
