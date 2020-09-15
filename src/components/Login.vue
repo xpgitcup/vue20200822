@@ -31,7 +31,7 @@
                 ></el-input>
             </el-form-item>
             <el-form-item label="记住我：">
-                <el-checkbox size="normal" class="loginRemember" v-model="loginForm.rememberMe"></el-checkbox>
+                <el-checkbox size="normal" class="loginRemember" v-model="loginForm.remember_me"></el-checkbox>
             </el-form-item>
 
             <el-button size="normal" type="primary" style="width: 100%;" @click="submitLogin">登录</el-button>
@@ -48,7 +48,7 @@ export default {
             loginForm: {
                 username: "",
                 password: "",
-                rememberMe: true,
+                remember_me: true,
             },
             rules: {
                 username: [
