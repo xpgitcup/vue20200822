@@ -27,7 +27,6 @@
                             ref="treeView"
                             :node-click-function="nodeClickFunction"
                             layout="prev,pager,next"
-                            title="基础数据结构配置"
                             domain-name="basicStructureOperation">
                         </tree-view>
                     </el-collapse-item>

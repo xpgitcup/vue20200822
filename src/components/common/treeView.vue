@@ -1,6 +1,6 @@
 <template>
     <el-card>
-        <div slot="header">{{ title }}</div>
+        <div slot="header" v-if="title">{{ title }}</div>
 
         <el-tree
             accordion
