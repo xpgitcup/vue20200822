@@ -61,7 +61,7 @@ export default {
                         console.log(response);
                         console.log(response.item.id);
                         if (response) {
-                            this.$router.replace('/expert/expertInfo')
+                            this.$router.replace('/expert/dataStructureInfo')
                             // this.$router.replace('/expert')
                             console.log('向上调用...')
                             this.$emit('handleDataLoad')

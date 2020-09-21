@@ -19,6 +19,7 @@ import expertInfo from "@/components/home/expert/expertInfo";
 import newNode from "@/components/home/expert/basicStructure/newNode";
 import editNode from "@/components/home/expert/basicStructure/editNode";
 import expertDefault from "@/components/home/expert/expertDefault";
+import dataStructureInfo from "@/components/home/expert/dataStructureInfo";
 
 Vue.use(VueRouter)
 
@@ -36,13 +37,16 @@ const routes = [
             {
                 path: 'expert', name: 'expert', component: expert,
                 children: [
-                    { path: '', name:'expertDefault', component: expertDefault},
+                    {path: '', name: 'expertDefault', component: expertDefault},
                     {
-                        path: 'expertInfo', name: 'expertInfo', component: expertInfo,
+                        path: 'dataStructureInfo', name: 'dataStructureInfo', component: dataStructureInfo,
                         children: [
                             {path: 'newNode', name: 'newNode', component: newNode},
                             {path: 'editNode', name: 'editNode', component: editNode},
                         ]
+                    },
+                    {
+                        path: 'expertInfo', name: 'expertInfo', component: expertInfo,
                     },
                     {path: 'unitSystemView', name: 'unitSystemView', component: unitSystemView},
                     {path: 'physicalQuantityView', name: 'physicalQuantityView', component: physicalQuantityView},

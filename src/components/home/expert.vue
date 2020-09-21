@@ -75,13 +75,20 @@ export default {
         nodeClickFunction(node) {
             // console.log('点击....', node)
             this.status.pageInfo.currentNode = node;
-            if (this.$route.path != '/expert/expertInfo') {
-                this.$router.replace('/expert/expertInfo');
-            }
+            // if (this.$route.path != '/expert/expertInfo') {
+            //     this.$router.replace('/expert/expertInfo');
+            // }
             console.log('更新子组件：', node.attributes[0].name);
-            if (this.$refs.child.radioNode) {
-                this.$refs.child.radioNode = node.attributes[0].name;
-                this.$refs.child.radioItem = node.attributes[1].name;
+            switch (node.attributes[0].name) {
+                case 'ElementType':
+                    this.$refs.child.activeName = '0'
+                    break;
+                case 'ElementObject':
+                    this.$refs.child.activeName = '1'
+                    break;
+                case 'DataProperty':
+                    this.$refs.child.activeName = '2'
+                    break;
             }
         },
         handleDataLoad() {
@@ -93,7 +100,9 @@ export default {
             console.log('打开：', activePage);
             switch (activePage) {
                 case '2':
-
+                    if (this.$route.path != '/expert/dataStructureInfo') {
+                        this.$router.replace('/expert/dataStructureInfo')
+                    }
                     break
             }
         }
