@@ -97,7 +97,7 @@ export default {
             this.$refs.treeView.handleDataLoad();
         },
         handleChange(activePage) {
-            console.log('打开：', activePage);
+            // console.log('打开：', activePage);
             switch (activePage) {
                 case '2':
                     if (this.$route.path != '/expert/dataStructureInfo') {

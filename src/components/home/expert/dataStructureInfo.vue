@@ -3,9 +3,6 @@
         <el-tab-pane v-for="(item, index) in etitles" :label="item">
             <el-card>
                 <div slot="header" style="display: flex">
-                    <el-button type="primary">
-                        {{ item }}
-                    </el-button>
                     <!--编辑按钮-->
                     <div v-if="index!=2">
                         <el-button round icon="el-icon-star-on" type="primary" style="margin-right: 10px">
@@ -19,9 +16,9 @@
                     <el-button-group v-if="currentNode">
                         <el-button-group>
                             <el-button type="success" icon="el-icon-star-on" round>
-                                {{ currentNode.name }}
+                                {{ currentNode.name }}==>
                             </el-button>
-                            <el-button type="primary" icon="el-icon-circle-plus" round>
+                            <el-button type="primary" icon="el-icon-circle-plus" round v-if="index!=2">
                                 <router-link :to="{ path: '/expert/dataStructureInfo/newNode',
                             query:{radioNode: radioNode, radioItem: radioItem, parent: 'true'}}">
                                     子节点
@@ -57,6 +54,8 @@ export default {
         return {
             radioNode: 'ElementType',
             radioItem: 'none',
+            elementType: ['ElementType', 'ElementObject', 'DataProperty'],
+            propertyType: ['none', 'scalar', 'string', 'vector', 'vector2D', 'object'],
             etitles: ['元素类型', '实体元素', '元素属性'],
             activeName: 'second'
         };
@@ -66,13 +65,27 @@ export default {
     },
     methods: {
         handleClick(tab, event) {
-            console.log(tab, event);
+            // console.log(tab.label, event);
+            // console.log(tab.label);
+            // console.log(tab.index);
+            this.radioNode = this.elementType[tab.index];
         },
         handleDataLoad() {
             console.log('刷新数据expertInfo...')
             console.log('向上调用...')
             this.$emit('handleDataLoad')
         },
+        deleteNode(id) {
+            console.log('删除！', id);
+            this.deleteRequest('/basicStructureOperation/delete/' + id).then(response => {
+                this.loading = false;
+                console.log("delete--删除节点");
+                console.log(response);
+                if (response) {
+                    this.$emit('handleDataLoad')
+                }
+            })
+        }
     }
 }
 </script>
