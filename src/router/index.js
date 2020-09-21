@@ -18,6 +18,7 @@ import deleteNode from "@/components/home/expert/dataTypeCode/deleteNode";
 import expertInfo from "@/components/home/expert/expertInfo";
 import newNode from "@/components/home/expert/basicStructure/newNode";
 import editNode from "@/components/home/expert/basicStructure/editNode";
+import expertDefault from "@/components/home/expert/expertDefault";
 
 Vue.use(VueRouter)
 
@@ -35,6 +36,7 @@ const routes = [
             {
                 path: 'expert', name: 'expert', component: expert,
                 children: [
+                    { path: '', name:'expertDefault', component: expertDefault},
                     {
                         path: 'expertInfo', name: 'expertInfo', component: expertInfo,
                         children: [
