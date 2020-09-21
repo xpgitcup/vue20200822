@@ -2,8 +2,8 @@
     <el-row>
         <el-col :span="4">
             <el-card>
-                <el-collapse accordion>
-                    <el-collapse-item title="单位维护">
+                <el-collapse accordion v-model="activePage" @change="handleChange">
+                    <el-collapse-item title="单位维护" name="1">
                         <el-menu router>
                             <el-menu-item>
                                 <router-link :to="{ path: '/expert/unitSystemView'}">
@@ -22,7 +22,7 @@
                             </el-menu-item>
                         </el-menu>
                     </el-collapse-item>
-                    <el-collapse-item title="基础结构">
+                    <el-collapse-item title="基础结构" name="2">
                         <tree-view
                             ref="treeView"
                             :node-click-function="nodeClickFunction"
@@ -30,7 +30,7 @@
                             domain-name="basicStructureOperation">
                         </tree-view>
                     </el-collapse-item>
-                    <el-collapse-item title="数据维护">
+                    <el-collapse-item title="数据维护" name="3">
                     </el-collapse-item>
                 </el-collapse>
             </el-card>
@@ -68,6 +68,7 @@ export default {
                     currentNode: null
                 },
             },
+            activePage: ''
         }
     },
     methods: {
@@ -87,6 +88,14 @@ export default {
             console.log('刷新数据expert...');
             console.log(this.$refs.atreeView);
             this.$refs.treeView.handleDataLoad();
+        },
+        handleChange(activePage) {
+            console.log('打开：', activePage);
+            switch (activePage) {
+                case '2':
+
+                    break
+            }
         }
     },
     computed: {}
