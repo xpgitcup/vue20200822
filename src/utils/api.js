@@ -47,9 +47,9 @@ axios.interceptors.response.use(success => {
 let base = '';
 
 export const postKeyValueRequestJson = (url, params) => {
-    console.log('base=' + base);
-    console.log('url=' + url);
-    console.log(params);
+    // console.log('base=' + base);
+    // console.log('url=' + url);
+    // console.log(params);
     return axios({
         method: 'post',
         url: `${base}${url}`,
@@ -61,9 +61,9 @@ export const postKeyValueRequestJson = (url, params) => {
 }
 
 export const postKeyValueRequest = (url, params) => {
-    console.log('base=' + base);
-    console.log('url=' + url);
-    console.log(params);
+    // console.log('base=' + base);
+    // console.log('url=' + url);
+    // console.log(params);
     return axios({
         method: 'post',
         url: `${base}${url}`,
@@ -73,9 +73,9 @@ export const postKeyValueRequest = (url, params) => {
             for (let i in data) {
                 ret += encodeURIComponent(i) + '=' + encodeURIComponent(data[i]) + '&'
             }
-            console.log('转换完毕：' + url);
-            console.log('???');
-            console.log(ret);
+            // console.log('转换完毕：' + url);
+            // console.log('???');
+            // console.log(ret);
             return ret;
         }],
         headers: {
@@ -85,9 +85,9 @@ export const postKeyValueRequest = (url, params) => {
 }
 
 export const putKeyValueRequest = (url, params) => {
-    console.log('base=' + base);
-    console.log('url=' + url);
-    console.log(params);
+    // console.log('base=' + base);
+    // console.log('url=' + url);
+    // console.log(params);
     return axios({
         method: 'put',
         url: `${base}${url}`,
@@ -107,8 +107,8 @@ export const putKeyValueRequest = (url, params) => {
 }
 
 export const postRequest = (url, params) => {
-    console.log("postRequest: ");
-    console.log(url + '?' + params);
+    // console.log("postRequest: ");
+    // console.log(url + '?' + params);
     return axios({
         method: 'post',
         url: `${base}${url}`,
@@ -117,8 +117,8 @@ export const postRequest = (url, params) => {
 }
 
 export const putRequest = (url, params) => {
-    console.log("putRequest: ");
-    console.log(url + '?' + params);
+    // console.log("putRequest: ");
+    // console.log(url + '?' + params);
     return axios({
         method: 'put',
         url: `${base}${url}`,
@@ -127,8 +127,8 @@ export const putRequest = (url, params) => {
 }
 
 export const getRequest = (url) => {
-    console.log("getRequest: ");
-    console.log(url);
+    // console.log("getRequest: ");
+    // console.log(url);
     return axios({
         method: 'get',
         url: `${base}${url}`
@@ -141,8 +141,8 @@ export const getRequest = (url) => {
  * @returns {AxiosPromise}
  */
 export const deleteRequest = (url) => {
-    console.log("deleteRequest: ");
-    console.log(url);
+    // console.log("deleteRequest: ");
+    // console.log(url);
     return axios({
         method: 'delete',
         url: `${base}${url}`,

@@ -102,7 +102,7 @@ export default {
             this.getRequest(url + offset + '&max=' + this.status.pageInfo.pageSize).then(response => {
                 // console.log(resp);
                 if (response) {
-                    console.log(response);
+                    // console.log(response);
                     this.data = response.list;
                     this.total = response.count
                     if ((this.total <= this.status.pageInfo.pageSize) && (this.status.pageInfo.currentPage != 1)) {

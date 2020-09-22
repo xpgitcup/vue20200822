@@ -78,7 +78,7 @@ export default {
             // if (this.$route.path != '/expert/expertInfo') {
             //     this.$router.replace('/expert/expertInfo');
             // }
-            console.log('更新子组件：', node.attributes[0].name);
+            // console.log('更新子组件：', node.attributes[0].name);
             switch (node.attributes[0].name) {
                 case 'ElementType':
                     this.$refs.child.activeName = '0'
@@ -93,7 +93,6 @@ export default {
         },
         handleDataLoad() {
             console.log('刷新数据expert...');
-            console.log(this.$refs.atreeView);
             this.$refs.treeView.handleDataLoad();
         },
         handleChange(activePage) {

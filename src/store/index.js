@@ -23,7 +23,7 @@ export default new Vuex.Store({
         },
         //--------------------------------------------------------------------------------------------------------------
         set_current_status(state, status) {
-            console.log('保存', status);
+            // console.log('保存', status);
             sessionStorage.setItem(status.currentPath, JSON.stringify(status.pageInfo));
         },
         set_server_status(state, ok) {

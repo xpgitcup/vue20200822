@@ -77,7 +77,7 @@ export default {
         let url = 'basicStructureOperation/show?id=' + this.$props.currentNode.id;
         this.getRequest(url).then(response => {
             // console.log('调用结束' + response.item);
-            console.log(response.item);
+            // console.log(response.item);
             this.form.name = response.item.name;
             this.form.auxname = response.item.auxname;
             this.form.basicStructureType = response.item.basicStructureType.name;
@@ -89,19 +89,19 @@ export default {
     },
     methods: {
         onSubmit() {
-            console.log('submit!');
+            // console.log('submit!');
             this.$refs.form.validate(valid => {
                 if (valid) {
                     this.loading = true;
                     this.putKeyValueRequest('/basicStructureOperation/update', this.form).then(response => {
                         this.loading = false;
-                        console.log("put调用结果--更新节点");
-                        console.log(response);
-                        console.log(response.item.id);
+                        // console.log("put调用结果--更新节点");
+                        // console.log(response);
+                        // console.log(response.item.id);
                         if (response) {
                             this.$router.replace('/expert/dataStructureInfo')
                             // this.$router.replace('/expert')
-                            console.log('向上调用...')
+                            // console.log('向上调用...')
                             this.$emit('handleDataLoad')
                         }
                     })

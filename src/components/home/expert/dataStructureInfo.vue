@@ -71,8 +71,7 @@ export default {
             this.radioNode = this.elementType[tab.index];
         },
         handleDataLoad() {
-            console.log('刷新数据expertInfo...')
-            console.log('向上调用...')
+            // console.log('向上调用...')
             this.$emit('handleDataLoad')
         },
         deleteNode(id) {
