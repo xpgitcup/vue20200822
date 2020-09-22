@@ -103,6 +103,11 @@ export default {
                         this.$router.replace('/expert/dataStructureInfo')
                     }
                     break
+                case '3':
+                    if (this.$route.path != '/expert/elementMaintain') {
+                        this.$router.replace('/expert/elementMaintain')
+                    }
+                    break
             }
         }
     },

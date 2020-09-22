@@ -20,6 +20,7 @@ import newNode from "@/components/home/expert/basicStructure/newNode";
 import editNode from "@/components/home/expert/basicStructure/editNode";
 import expertDefault from "@/components/home/expert/expertDefault";
 import dataStructureInfo from "@/components/home/expert/dataStructureInfo";
+import elementMaintain from "@/components/home/expert/elementMaintain";
 
 Vue.use(VueRouter)
 
@@ -38,6 +39,9 @@ const routes = [
                 path: 'expert', name: 'expert', component: expert,
                 children: [
                     {path: '', name: 'expertDefault', component: expertDefault},
+                    {path: 'unitSystemView', name: 'unitSystemView', component: unitSystemView},
+                    {path: 'physicalQuantityView', name: 'physicalQuantityView', component: physicalQuantityView},
+                    {path: 'quantityUnitView', name: 'quantityUnitView', component: quantityUnitView},
                     {
                         path: 'dataStructureInfo', name: 'dataStructureInfo', component: dataStructureInfo,
                         children: [
@@ -45,12 +49,8 @@ const routes = [
                             {path: 'editNode', name: 'editNode', component: editNode},
                         ]
                     },
-                    {
-                        path: 'expertInfo', name: 'expertInfo', component: expertInfo,
-                    },
-                    {path: 'unitSystemView', name: 'unitSystemView', component: unitSystemView},
-                    {path: 'physicalQuantityView', name: 'physicalQuantityView', component: physicalQuantityView},
-                    {path: 'quantityUnitView', name: 'quantityUnitView', component: quantityUnitView},
+                    {path: 'elementMaintain', name: 'elementMaintain', component: elementMaintain},
+                    {path: 'expertInfo', name: 'expertInfo', component: expertInfo},
                     {
                         path: 'dataTypeCodeView', name: 'dataTypeCodeView', component: dataTypeCodeView,
                         children: [
