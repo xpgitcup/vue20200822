@@ -36,7 +36,7 @@ const routes = [
         children: [
             {path: '', name: 'status', component: status},
             {
-                path: 'expert', name: 'expert', component: expert,
+                path: 'expert', component: expert,
                 children: [
                     {path: '', name: 'expertDefault', component: expertDefault},
                     {path: 'unitSystemView', name: 'unitSystemView', component: unitSystemView},
@@ -52,7 +52,7 @@ const routes = [
                     {path: 'elementMaintain', name: 'elementMaintain', component: elementMaintain},
                     {path: 'expertInfo', name: 'expertInfo', component: expertInfo},
                     {
-                        path: 'dataTypeCodeView', name: 'dataTypeCodeView', component: dataTypeCodeView,
+                        path: 'dataTypeCodeView', component: dataTypeCodeView,
                         children: [
                             {path: '', name: 'nodeView', component: nodeView},
                             {path: 'createRootNode', name: 'createRootNode', component: createRootNode},
