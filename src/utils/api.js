@@ -6,6 +6,7 @@ axios.defaults.headers.post['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.headers.get['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.headers.put['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.headers.delete['X-Requested-With'] = 'XMLHttpRequest';
+axios.defaults.baseURL = 'http://localhost:8000'
 
 axios.interceptors.response.use(success => {
     if (success.status && success.status == 200 && success.data.status == 500) {
