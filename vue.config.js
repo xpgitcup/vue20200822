@@ -4,7 +4,7 @@ proxyObj['/'] = {
     target: 'http://localhost:8000',
     changeOrigin: true,
     pathRewrite: {
-        '^/': ''
+        '^/api': ''
     }
 }
 
