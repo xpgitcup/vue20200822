@@ -6,7 +6,7 @@ axios.defaults.headers.post['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.headers.get['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.headers.put['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.headers.delete['X-Requested-With'] = 'XMLHttpRequest';
-axios.defaults.baseURL = 'http://localhost:8000'
+// axios.defaults.baseURL = 'http://localhost:8000'
 
 axios.interceptors.response.use(success => {
     if (success.status && success.status == 200 && success.data.status == 500) {
@@ -45,7 +45,7 @@ axios.interceptors.response.use(success => {
     return;
 })
 
-let base = '';
+let base = '/api';      // 开发的时候清空，发布的时候设置
 
 export const postKeyValueRequestJson = (url, params) => {
     // console.log('base=' + base);
@@ -128,7 +128,7 @@ export const putRequest = (url, params) => {
 }
 
 export const getRequest = (url) => {
-    // console.log("getRequest: ");
+    console.log("getRequest: ", url);
     // console.log(url);
     return axios({
         method: 'get',

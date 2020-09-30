@@ -64,7 +64,8 @@ export default {
                 if (valid) {
                     this.loading = true;
                     console.log("登录前:");
-                    this.postKeyValueRequestJson('/api/login', this.loginForm).then(resp => {
+                    // this.postKeyValueRequestJson('/api/login', this.loginForm).then(resp => {    // 这样设置反向代理以后有冲突
+                    this.postKeyValueRequestJson('api/login', this.loginForm).then(resp => {    // 应该这样设置，不要开头的/
                         this.loading = false;
                         console.log("登录后调用结果");
                         console.log(resp);
