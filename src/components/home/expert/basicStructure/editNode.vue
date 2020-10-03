@@ -103,6 +103,7 @@ export default {
                             // this.$router.replace('/expert')
                             // console.log('向上调用...')
                             this.$emit('handleDataLoad')
+                            this.$store.commit('record_log', '编辑节点' + this.form.name)
                         }
                     })
                 } else {

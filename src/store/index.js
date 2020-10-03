@@ -1,6 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+// 一些不太明白的定义
+import {
+    // postKeyValueRequestJson,
+    // postKeyValueRequest,
+    // putKeyValueRequest,
+    // postRequest,
+    // putRequest,
+    // deleteRequest,
+    getRequest
+} from "../utils/api";
+
 Vue.use(Vuex)
 
 const currentUser = 'currentUser';
@@ -29,6 +40,15 @@ export default new Vuex.Store({
         set_server_status(state, ok) {
             state.serverStatus = ok;
             sessionStorage.setItem(serverStatus, ok);
+        },
+        //--------------------------------------------------------------------------------------------------------------
+        record_log(state, doing) {
+            let user = state.currentUser.username;
+            let url = '/systemLogOperation/recordAction?username=' + user + '&doing=' + doing;
+            console.log('记录日志...', url)
+            getRequest(url).then(response => {
+                console.log(response)
+            })
         }
     },
     getters: {

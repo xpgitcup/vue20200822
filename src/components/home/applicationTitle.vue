@@ -58,6 +58,7 @@ export default {
                 // console.log("调用结果");
                 // console.log(resp);
                 if (resp) {
+                    this.$store.commit('record_log', '退出'); // 这里的调用取决于doLogin的输出
                     this.$store.commit('LOGOUT_CURRENTHR'); // 这里的调用取决于doLogin的输出
                     // console.log(this.$router);
                 }
